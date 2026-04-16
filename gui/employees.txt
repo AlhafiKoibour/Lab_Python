@@ -1,0 +1,2 @@
+A123456,Alhafi,Cybersecurity,300000.0
+A56273,Bon,Informatique,700000.0
