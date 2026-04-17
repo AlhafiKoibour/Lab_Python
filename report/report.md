@@ -3,11 +3,11 @@
 **Group Identification (NAME): Group-07-merkle-roots**
 
 **Group Members (Names):**
-Sime Delonney Njeba	UBa25EP122 **Project Lead**
-Alhafi Koïbour	UBa25EP125
-Tchoffouo Djimyr Hassan	UBa25EP132
-Mugob Irine Tawe	UBa25EP141
-EKENU STEVE MBAH UBa25EP113
+* **Sime Delonney Njeba**(UBa25EP122) *Project Lead*
+* **Alhafi Koïbour**(UBa25EP125)
+* **Tchoffouo Djimyr Hassan**(UBa25EP132)
+* *Mugob Irine Tawe**(UBa25EP141)
+* **EKENU STEVE MBAH**(UBa25EP113)
 
 **Date of Submission:** Friday
 
@@ -27,14 +27,14 @@ Our TCP server listens for incoming connections on a specific port, receives a t
 
 | Primitive | Purpose in your code |
 |-----------|---------------------|
-| socket()  | |Creates the communication endpoint using the IPv4 address family and the TCP protocol.
-| bind()    | |Assigns the server's socket to a specific IP address and port number to receive data.
-| listen()  | |Places the server in a passive mode, allowing it to wait for connection attempts from clients.
-| accept()  | |Blocks execution until a client connects, then creates a new socket dedicated to that specific exchange.
-| connect() | |Used by the client to initiate a TCP handshake with the server at the specified address and port.
-| sendall() | |Transmits the entire message through the socket, ensuring all data is sent before continuing.
-| recv()    | |Reads incoming data sent by the other party (limited by the specified buffer size).
-| close()   | |Releases system resources and properly terminates the communication session.
+| socket()  | Creates the communication endpoint using the IPv4 address family and the TCP protocol.|
+| bind()    |Assigns the server's socket to a specific IP address and port number to receive data.|
+| listen()  |Places the server in a passive mode, allowing it to wait for connection attempts from clients.|
+| accept()  |Blocks execution until a client connects, then creates a new socket dedicated to that specific exchange.|
+| connect() |Used by the client to initiate a TCP handshake with the server at the specified address and port.|
+| sendall() |Transmits the entire message through the socket, ensuring all data is sent before continuing.|
+| recv()    |Reads incoming data sent by the other party (limited by the specified buffer size).
+| close()   |Releases system resources and properly terminates the communication session.|
 
 ## 3. Failure Analysis
 <!-- What happens if the client runs before the server is ready?
