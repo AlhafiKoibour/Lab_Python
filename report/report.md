@@ -3,11 +3,11 @@
 **Group Identification (NAME): Group-07-merkle-roots**
 
 **Group Members (Names):**
-* **Sime Delonney Njeba**(UBa25EP122) *Project Lead*
-* **Alhafi Koïbour**(UBa25EP125)
-* **Tchoffouo Djimyr Hassan**(UBa25EP132)
-* *Mugob Irine Tawe**(UBa25EP141)
-* **EKENU STEVE MBAH**(UBa25EP113)
+* **Sime Delonney Njeba** (UBa25EP122) *Project Lead*
+* **Alhafi Koïbour** (UBa25EP125)
+* **Tchoffouo Djimyr Hassan** (UBa25EP132)
+* **Mugob Irine Tawe** (UBa25EP141)
+* **EKENU STEVE MBAH** (UBa25EP113)
 
 **Date of Submission:** Friday
 
@@ -41,7 +41,7 @@ Our TCP server listens for incoming connections on a specific port, receives a t
      What error do you observe? What does this tell you about
      assumptions in distributed systems? (~100 words) -->
 
-Si le client est lancé avant que le serveur ne soit prêt, le programme s'arrête brusquement avec une erreur de type **ConnectionRefusedError**. Cela démontre une vérité fondamentale des systèmes distribués : on ne peut pas assumer la disponibilité des composants. Dans un environnement réel, les systèmes doivent être conçus pour gérer l'échec de connexion avec des mécanismes de "retry" (tentatives successives) ou des messages d'erreur explicites, car les nœuds du réseau ne démarrent jamais de manière parfaitement synchrone.
+If the client runs before the server is ready, the program crashes with a ConnectionRefusedError. This highlights a fundamental truth in distributed systems: one cannot assume component availability. In real-world environments, systems must be designed to handle connection failures using retry mechanisms or explicit error messages, as network nodes rarely start in perfect synchrony. This demonstrates that distributed components are inherently loosely coupled.
 
 ## 4. Security Observation
 <!-- This TCP exchange has no authentication, no encryption, and
@@ -56,7 +56,6 @@ A primary vulnerability is Eavesdropping via a Man-in-the-Middle (MitM) attack. 
      this? Connect it to one concept from Week 1 lectures. (~75 words) -->
 
 The most important lesson was understanding the client-server model beyond theoretical definitions. By manipulating these primitives, we observed how the **Transport Layer** abstraction manages data reliability. This connects directly to the concept of Location Transparency from Week 1: once the connection is established, the code handles data exchange almost like a local file operation, hiding the underlying network complexity.
----
 
 ## References
 Tanenbaum, A. & Van Steen, M. (2017). *Distributed Systems: Principles and Paradigms* (3rd ed.). Chapter 4.
