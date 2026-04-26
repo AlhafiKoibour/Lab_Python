@@ -1,6 +1,6 @@
 # CYBE 6223 — Lab 0 Report
 
-**Group Identification (NAME): Group-07-merkle-roots**
+**Group Identification (NAME):** Group-07-merkle-roots
 
 **Group Members (Names):**
 * **Sime Delonney Njeba**(UBa25EP122) *Project Lead*
