@@ -1,0 +1,61 @@
+{
+  "name": "Employee Manager",
+  "version": "1.0.0",
+  "description": "Application de gestion des employes avec interface graphique Tkinter",
+  "author": "Developer",
+  "license": "MIT",
+  "keywords": ["employee", "management", "tkinter", "sqlite", "csv"],
+  
+  "project_urls": {
+    "documentation": "README.md",
+    "quickstart": "QUICKSTART.md",
+    "roadmap": "ROADMAP.md",
+    "contributing": "CONTRIBUTING.md"
+  },
+  
+  "requirements": {
+    "python_version": ">=3.8",
+    "dependencies": {
+      "tkinter": "builtin",
+      "sqlite3": "builtin",
+      "os": "builtin",
+      "sys": "builtin"
+    }
+  },
+  
+  "scripts": {
+    "start": "python main.py",
+    "test": "python test.py",
+    "dev": "python test.py && python main.py"
+  },
+  
+  "structure": {
+    "main.py": "Point d'entree principal",
+    "config.py": "Configuration et parametres",
+    "test.py": "Tests unitaires",
+    "gui/app.py": "Interface graphique Tkinter",
+    "models/employee.py": "Modele de donnees Employee",
+    "services/db_service.py": "Service SQLite",
+    "services/file_service.py": "Service fichier CSV"
+  },
+  
+  "features": [
+    "Ajouter/Modifier/Supprimer des employes",
+    "Deux modes de stockage (SQLite et CSV)",
+    "Basculage dynamique entre les modes",
+    "Validation des donnees",
+    "Interface GUI professional",
+    "Gestion completes des erreurs"
+  ],
+  
+  "technologies": [
+    "Python 3.8+",
+    "Tkinter",
+    "SQLite3",
+    "CSV"
+  ],
+  
+  "status": "production",
+  "maintained": true,
+  "last_updated": "2026-04-26"
+}

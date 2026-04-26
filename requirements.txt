@@ -1,0 +1,7 @@
+# Aucune dépendance externe requise
+# Tkinter est inclus avec Python
+# SQLite3 est inclus avec Python
+
+# Dépendances optionnelles pour le développement :
+# pytest==7.4.0  # Pour les tests unitaires
+# black==23.7.0  # Pour le formatage du code

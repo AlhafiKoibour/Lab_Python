@@ -1,61 +1,67 @@
-import psycopg2
+import sqlite3
 from models.employee import Employee
-from config import DB_CONFIG
 
+DB_PATH = "employees.db"
 
-def connect():
-    return psycopg2.connect(**DB_CONFIG)
-
-
-def add_employee(emp):
+def init_db():
+    """Initialise la base de données SQLite"""
     try:
-        conn = connect()
-        cur = conn.cursor()
-
-        cur.execute(
-            "INSERT INTO employees VALUES (%s, %s, %s, %s)",
-            (emp.emp_id, emp.name, emp.position, emp.salary)
-        )
-
-        conn.commit()
-        cur.close()
-        conn.close()
-
+        with sqlite3.connect(DB_PATH) as conn:
+            conn.execute("""
+                CREATE TABLE IF NOT EXISTS employees (
+                    emp_id TEXT PRIMARY KEY,
+                    name TEXT NOT NULL,
+                    position TEXT NOT NULL,
+                    salary REAL NOT NULL
+                )
+            """)
+            conn.commit()
     except Exception as e:
-        print("DB insert error:", e)
+        print(f"Erreur Database (Initialisation) : {e}")
 
+def get_connection():
+    return sqlite3.connect(DB_PATH)
 
-def get_all_employees():
+def add_employee_db(emp: Employee):
+    query = "INSERT OR IGNORE INTO employees (emp_id, name, position, salary) VALUES (?, ?, ?, ?)"
+    try:
+        with get_connection() as conn:
+            conn.execute(query, (emp.emp_id, emp.name, emp.position, emp.salary))
+            conn.commit()
+    except Exception as e:
+        print(f"Erreur Database (Insertion) : {e}")
+
+def get_all_employees_db():
     employees = []
     try:
-        conn = connect()
-        cur = conn.cursor()
-
-        cur.execute("SELECT * FROM employees")
-        rows = cur.fetchall()
-
-        for r in rows:
-            employees.append(Employee(*r))
-
-        cur.close()
-        conn.close()
-
+        with get_connection() as conn:
+            cursor = conn.execute("SELECT emp_id, name, position, salary FROM employees ORDER BY emp_id")
+            for row in cursor.fetchall():
+                employees.append(Employee(*row))
     except Exception as e:
-        print("DB fetch error:", e)
-
+        print(f"Erreur Database (Lecture) : {e}")
     return employees
 
-
-def delete_employee(emp_id):
+def update_employee_db(emp: Employee):
+    """Modifier un employé existant"""
+    query = "UPDATE employees SET name = ?, position = ?, salary = ? WHERE emp_id = ?"
     try:
-        conn = connect()
-        cur = conn.cursor()
-
-        cur.execute("DELETE FROM employees WHERE emp_id = %s", (emp_id,))
-        conn.commit()
-
-        cur.close()
-        conn.close()
-
+        with get_connection() as conn:
+            cursor = conn.execute(query, (emp.name, emp.position, emp.salary, emp.emp_id))
+            conn.commit()
+            if cursor.rowcount == 0:
+                print(f"Aucun employé trouvé avec l'ID {emp.emp_id}")
     except Exception as e:
-        print("DB delete error:", e)
+        print(f"Erreur Database (Modification) : {e}")
+
+def delete_employee_db(emp_id: str):
+    """Supprimer un employé"""
+    query = "DELETE FROM employees WHERE emp_id = ?"
+    try:
+        with get_connection() as conn:
+            cursor = conn.execute(query, (emp_id,))
+            conn.commit()
+            if cursor.rowcount == 0:
+                print(f"Aucun employé trouvé avec l'ID {emp_id}")
+    except Exception as e:
+        print(f"Erreur Database (Suppression) : {e}")
