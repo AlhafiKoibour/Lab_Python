@@ -1,6 +1,5 @@
 # Application Employee Manager - Version 1.0.0
 
-## 🎉 Félicitations ! Votre application est prête !
 
 Application de gestion des employés complète et fonctionnelle.
 

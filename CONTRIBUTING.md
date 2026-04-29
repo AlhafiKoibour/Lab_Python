@@ -1,7 +1,5 @@
 # Guide de Contribution
 
-Merci de votre interet pour contribuer a Employee Manager !
-
 ## Comment contribuer
 
 ### 1. Signaler un bug
